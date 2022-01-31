@@ -17,29 +17,41 @@ function loadTodo(){
     }
 }
 
-function removeTodo(event){
-    const target_li = event.target.parentElement;
-    target_li.remove();
-    todoArr = todoArr.filter(function(item){
-        return item.id !== parseInt(target_li.id);
-    });
-    saveTodo();
-}
-
 function paintTodo(todoItem){
     const li = document.createElement('li');
     const span = document.createElement('span');
-    const button = document.createElement('button');
+    const button_clear = document.createElement('button');
+    const button_rm = document.createElement('button');
 
     span.classList.add('li_span');
     li.id = todoItem.id;
 
-    button.addEventListener('click', removeTodo);
+    button_clear.addEventListener('click', (event) => {
+        const target_li = event.target.parentElement;
+        const target_span = target_li.querySelector('span');
+        console.log(target_span);
+        target_span.classList.toggle('active');
+    });
 
-    button.innerText = '📃'
+    button_rm.addEventListener('click', (event) => {
+        const target_li = event.target.parentElement;
+        target_li.remove();
+        todoArr = todoArr.filter(function(item){
+            return item.id !== parseInt(target_li.id);
+        });
+        saveTodo();
+    });
+
+    button_clear.innerText = '📃';
+    button_rm.innerText = 'backspace';
     span.innerText = todoItem.text;
 
-    li.appendChild(button);
+    button_clear.id = 'clear';
+    button_rm.id = 'rm';
+    button_rm.classList.add("material-icons");
+
+    li.appendChild(button_clear);
+    li.appendChild(button_rm);
     li.appendChild(span);
     todoList.appendChild(li);
 }

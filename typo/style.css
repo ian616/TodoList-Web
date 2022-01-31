@@ -70,6 +70,7 @@ li{
     border-bottom: 1px solid rgba(73, 73, 73, 0.377);
     text-align: left;
     font-size: 25px;
+    transition: all 0.5s;
 }
 
 li button{
@@ -80,17 +81,30 @@ li button{
 }
 
 li .li_span{
-    font-size: 15px;
+    font-size: 17px;
+    position: absolute;
+    transform: translate(-30px, 9%);
+    color: rgba(3, 49, 38, 0.993);
+    font-weight: 700;
 }
 
-.weather{
-    position: absolute;
-    width: 100px;
-    height: 30px;
-    background-color: rgba(152, 214, 196, 0.651);
-    top: 7%;
-    left: 5%;
-    border: 1px solid red;
-    padding-top: 7px;
-    text-align: center;
+li .active{
+    text-decoration: line-through;
+}
+
+li:hover{
+    scale: 1.1;
+}
+
+li #rm{
+    position: relative;
+    left: 80%;
+    font-size: 70%;
+    transform: translate(0, -25%);
+    transition: all 0.5s;
+    color: rgba(3, 49, 38, 0.993);
+}
+
+li #rm:hover{
+    color: rgba(216, 11, 38, 0.842);
 }
